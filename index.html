@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Estados Financieros Fácil</title>
+<meta name="description" content="Aprende los 4 estados financieros básicos y arma el Balance, el Estado de Resultados, el Flujo de Caja y los Cambios en el Patrimonio de tu negocio desde el celular.">
+<meta name="theme-color" content="#0a1230">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Estados Financieros Fácil — Vibras Positivas HM">
+<meta property="og:description" content="Aprende y arma los 4 estados financieros de tu negocio desde el celular: Balance, Resultados, Flujo de Caja y Patrimonio.">
+<meta property="og:url" content="https://haroldco45.github.io/estados-financieros/">
+<meta property="og:image" content="https://haroldco45.github.io/estados-financieros/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Estados Financieros Fácil — Vibras Positivas HM">
+<meta name="twitter:description" content="Aprende y arma los 4 estados financieros de tu negocio desde el celular.">
+<meta name="twitter:image" content="https://haroldco45.github.io/estados-financieros/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a1230;--bg2:#0f1a40;--card:#14204d;--card2:#1b2a60;--ink:#eef2ff;--mut:#9fb0da;--line:rgba(255,255,255,.09);--amb:#ffb020;--grn:#22d3a6;--red:#ff5d73;--blu:#4f8cff;--vio:#9b6bff}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:'Poppins',system-ui,-apple-system,sans-serif}
+body{min-height:100vh;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+button{font:inherit;cursor:pointer;border:0}
+input,select{font:inherit}
+.blobs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.blobs i{position:absolute;width:60vmax;height:60vmax;border-radius:50%;filter:blur(90px);opacity:.33;animation:float 18s ease-in-out infinite alternate}
+.blobs i:nth-child(1){background:var(--blu);top:-25vmax;left:-25vmax}
+.blobs i:nth-child(2){background:var(--vio);bottom:-30vmax;right:-25vmax;animation-delay:-6s}
+.blobs i:nth-child(3){background:var(--amb);top:45%;left:45%;width:32vmax;height:32vmax;opacity:.13;animation-delay:-12s}
+@keyframes float{to{transform:translate(8vmax,6vmax) scale(1.15)}}
+
+/* splash */
+#splash{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;text-align:center;transition:opacity .6s,visibility .6s}
+#splash.out{opacity:0;visibility:hidden}
+#splash .big{font-size:64px;animation:pop 1s ease infinite alternate}
+#splash h1{font-size:22px;margin-top:10px}
+#splash p{color:var(--mut);font-size:12px;margin-top:6px}
+@keyframes pop{to{transform:scale(1.12) rotate(-6deg)}}
+
+header.top{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(10,18,48,.72);border-bottom:1px solid var(--line);padding:10px 16px;display:flex;align-items:center;gap:10px}
+.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--amb),var(--red));display:grid;place-items:center;font-weight:800;color:#1a1300;font-size:15px;box-shadow:0 4px 16px rgba(255,176,32,.35)}
+.top b{display:block;font-size:15px;line-height:1.1}
+.top small{color:var(--mut);font-size:11px}
+#btnInstall{margin-left:auto;background:var(--amb);color:#1a1300;font-weight:700;font-size:12px;padding:8px 12px;border-radius:999px;display:none}
+
+main{max-width:760px;margin:0 auto;padding:16px 16px 120px}
+.view{display:none;animation:fadeUp .45s ease}
+.view.on{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+nav.tabs{position:fixed;bottom:0;left:0;right:0;z-index:30;display:flex;justify-content:center;gap:6px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(10,18,48,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+nav.tabs button{flex:1;max-width:200px;background:transparent;color:var(--mut);padding:8px 4px;border-radius:14px;font-size:12px;font-weight:600;display:flex;flex-direction:column;align-items:center;gap:2px;transition:.25s}
+nav.tabs button span{font-size:20px;transition:transform .25s}
+nav.tabs button.on{background:linear-gradient(135deg,rgba(255,176,32,.2),rgba(255,93,115,.18));color:var(--ink)}
+nav.tabs button.on span{transform:translateY(-2px) scale(1.15)}
+
+.hero{border-radius:24px;padding:22px 18px;background:linear-gradient(135deg,#1d3bb8,#6a3bd6 60%,#d0446a);position:relative;overflow:hidden;margin-bottom:16px;box-shadow:0 14px 40px rgba(79,140,255,.25)}
+.hero::after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.12);right:-60px;top:-60px;animation:float 9s ease-in-out infinite alternate}
+.hero h2{font-size:24px;line-height:1.15;position:relative;z-index:1}
+.hero p{font-size:14px;opacity:.92;margin-top:8px;position:relative;z-index:1}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;position:relative;z-index:1}
+.chip{background:rgba(255,255,255,.18);font-size:12px;padding:5px 10px;border-radius:999px;font-weight:600}
+
+.card{background:linear-gradient(160deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:20px;padding:18px;margin-bottom:14px;box-shadow:0 10px 30px rgba(0,0,0,.22)}
+.card h3{font-size:18px;display:flex;align-items:center;gap:10px}
+.num{min-width:34px;height:34px;border-radius:11px;display:grid;place-items:center;font-weight:800;font-size:15px;color:#0a1230}
+.n1{background:var(--blu)}.n2{background:var(--grn)}.n3{background:var(--amb)}.n4{background:var(--vio)}.n5{background:var(--red)}
+.card p,.card li{font-size:14px;color:#d6defa;line-height:1.55}
+.card p+p{margin-top:8px}
+.card ul,.card ol{padding-left:20px;margin-top:8px}
+.card li{margin:4px 0}
+.mut{color:var(--mut)!important;font-size:13px}
+.formula{margin:12px 0;padding:12px 14px;border-radius:14px;background:rgba(255,176,32,.12);border:1px dashed rgba(255,176,32,.5);font-weight:700;text-align:center;font-size:15px}
+details.more{margin-top:10px}
+details.more summary{cursor:pointer;color:var(--amb);font-weight:600;font-size:14px;list-style:none}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::before{content:"＋ "}
+details.more[open] summary::before{content:"－ "}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+.rv.in{opacity:1;transform:none}
+
+/* balanza interactiva */
+.play{margin-top:12px;background:rgba(255,255,255,.04);border-radius:16px;padding:14px}
+.play label{font-size:13px;color:var(--mut);display:flex;justify-content:space-between}
+.play label b{color:var(--ink)}
+input[type=range]{width:100%;accent-color:var(--amb);margin:6px 0 10px}
+.stack{display:flex;gap:10px;align-items:flex-end;height:150px;margin-top:6px}
+.col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%}
+.seg{border-radius:10px;display:grid;place-items:center;font-size:11px;font-weight:700;color:#0a1230;transition:height .5s cubic-bezier(.2,.9,.3,1.2);overflow:hidden;min-height:0}
+.col small{text-align:center;font-size:11px;color:var(--mut);margin-top:4px}
+
+/* cascada */
+.casc{margin-top:12px}
+.crow{display:grid;grid-template-columns:120px 1fr;gap:8px;align-items:center;margin:5px 0;font-size:12px}
+.crow .bar{height:22px;border-radius:7px;width:0;transition:width 1s cubic-bezier(.2,.9,.3,1);display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-weight:700;color:#0a1230;font-size:11px;white-space:nowrap}
+
+/* checklists */
+.chk{display:flex;gap:10px;align-items:flex-start;padding:10px;border-radius:12px;margin:6px 0;background:rgba(255,255,255,.04);cursor:pointer;transition:.2s}
+.chk:active{transform:scale(.98)}
+.chk .box{flex:0 0 24px;height:24px;border-radius:8px;border:2px solid var(--mut);display:grid;place-items:center;font-size:14px;transition:.25s}
+.chk.done .box{background:var(--grn);border-color:var(--grn);color:#0a1230}
+.chk.done .t{opacity:.6;text-decoration:line-through}
+.chk .t{font-size:14px;line-height:1.45}
+.chk .t b{display:block}
+.prog{height:8px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:10px}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--grn),var(--amb));transition:width .5s}
+
+/* quiz */
+.qopt{display:block;width:100%;text-align:left;background:rgba(255,255,255,.06);color:var(--ink);padding:12px 14px;border-radius:12px;margin:7px 0;font-size:14px;border:1px solid transparent;transition:.2s}
+.qopt.ok{background:rgba(34,211,166,.2);border-color:var(--grn)}
+.qopt.bad{background:rgba(255,93,115,.2);border-color:var(--red);animation:shake .4s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.qhead{display:flex;justify-content:space-between;font-size:12px;color:var(--mut);margin-bottom:8px}
+
+/* armar */
+.steps{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.steps::-webkit-scrollbar{display:none}
+.steps button{flex:0 0 auto;background:rgba(255,255,255,.06);color:var(--mut);font-size:12px;font-weight:600;padding:8px 12px;border-radius:999px;transition:.25s}
+.steps button.on{background:var(--amb);color:#1a1300}
+.steps button.ok:not(.on){color:var(--grn)}
+.panel{display:none;animation:fadeUp .4s}
+.panel.on{display:block}
+.grp{margin-top:14px}
+.grp h4{font-size:14px;color:var(--amb);display:flex;justify-content:space-between;align-items:baseline}
+.grp h4 em{font-style:normal;color:var(--ink);font-size:13px}
+.grp .sub{font-size:12px;color:var(--mut);margin-bottom:4px}
+.fld{margin:8px 0}
+.fld label{display:flex;justify-content:space-between;gap:8px;font-size:13px;margin-bottom:4px}
+.fld label .q{flex:0 0 22px;height:22px;border-radius:50%;background:rgba(255,255,255,.1);font-size:12px;display:grid;place-items:center;color:var(--mut)}
+.fld .help{display:none;font-size:12px;color:var(--mut);margin:-2px 0 6px;padding:8px 10px;border-radius:10px;background:rgba(79,140,255,.1)}
+.fld.h .help{display:block}
+.inp{width:100%;background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--ink);padding:12px 14px;border-radius:12px;font-size:16px;outline:none;transition:.2s}
+.inp:focus{border-color:var(--amb);background:rgba(255,176,32,.07);box-shadow:0 0 0 4px rgba(255,176,32,.12)}
+.money{position:relative}
+.money::before{content:"$";position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--mut)}
+.money .inp{padding-left:28px;font-variant-numeric:tabular-nums}
+.live{position:sticky;bottom:86px;z-index:10;margin-top:14px;border-radius:18px;padding:12px 14px;background:rgba(20,32,77,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.35);display:flex;align-items:center;gap:12px}
+.live .ic{font-size:26px}
+.live .tx{font-size:12px;color:var(--mut);line-height:1.35;flex:1}
+.live .tx b{display:block;font-size:17px;color:var(--ink)}
+.live.good{border-color:rgba(34,211,166,.6)}
+.live.bad{border-color:rgba(255,93,115,.6)}
+.nav2{display:flex;gap:10px;margin-top:14px}
+.btn{flex:1;padding:13px;border-radius:14px;font-weight:700;font-size:14px;transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.b1{background:linear-gradient(135deg,var(--amb),#ff7a3d);color:#1a1300;box-shadow:0 8px 20px rgba(255,140,40,.3)}
+.b2{background:rgba(255,255,255,.08);color:var(--ink)}
+.b3{background:rgba(34,211,166,.15);color:var(--grn)}
+.b4{background:rgba(255,93,115,.12);color:var(--red)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+/* informe */
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.kpi{border-radius:18px;padding:14px;background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line);position:relative;overflow:hidden}
+.kpi::after{content:"";position:absolute;right:-20px;bottom:-20px;width:70px;height:70px;border-radius:50%;opacity:.25}
+.kpi.k1::after{background:var(--blu)}.kpi.k2::after{background:var(--red)}.kpi.k3::after{background:var(--vio)}.kpi.k4::after{background:var(--grn)}
+.kpi small{font-size:11px;color:var(--mut);display:block}
+.kpi b{font-size:18px;font-variant-numeric:tabular-nums;display:block;margin-top:2px;word-break:break-all}
+.checks{display:grid;gap:8px;margin-bottom:14px}
+.ck{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:14px;font-size:13px}
+.ck.g{background:rgba(34,211,166,.12);border:1px solid rgba(34,211,166,.35)}
+.ck.r{background:rgba(255,93,115,.12);border:1px solid rgba(255,93,115,.35)}
+.ck span{font-size:18px}
+table.st{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px;font-variant-numeric:tabular-nums}
+table.st td{padding:6px 4px;border-bottom:1px solid var(--line)}
+table.st td:last-child{text-align:right;white-space:nowrap}
+table.st tr.h td{color:var(--amb);font-weight:700;padding-top:12px;border-bottom:none}
+table.st tr.s td{font-weight:700}
+table.st tr.t td{font-weight:800;font-size:14px;border-top:2px solid rgba(255,255,255,.25)}
+table.st td.ind{padding-left:14px;color:#d6defa}
+.neg{color:var(--red)}
+.ind-grid{display:grid;gap:8px;margin-top:10px}
+.indi{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.04)}
+.dot{width:12px;height:12px;border-radius:50%;box-shadow:0 0 12px currentColor}
+.dot.g{background:var(--grn);color:var(--grn)}.dot.y{background:var(--amb);color:var(--amb)}.dot.r{background:var(--red);color:var(--red)}.dot.n{background:var(--mut);color:var(--mut)}
+.indi b{font-size:13px;display:block}
+.indi small{font-size:11px;color:var(--mut);line-height:1.3;display:block}
+.indi strong{font-size:15px;font-variant-numeric:tabular-nums}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.empty{text-align:center;padding:30px 10px}
+.empty .big{font-size:56px;animation:pop 1.4s ease infinite alternate;display:inline-block}
+footer.credit{text-align:center;font-size:11px;color:var(--mut);margin-top:22px;line-height:1.6}
+.privacy{font-size:12px;color:var(--mut);padding:10px 12px;border-radius:12px;background:rgba(79,140,255,.08);margin-top:10px}
+.toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:13px;font-weight:600;opacity:0;transition:.3s;z-index:60;pointer-events:none;max-width:90vw;text-align:center}
+.toast.on{opacity:1;transform:translateX(-50%)}
+.confetti{position:fixed;top:-10px;width:9px;height:14px;z-index:70;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg)}}
+.print-head{display:none}
+
+@media print{
+  body{background:#fff;color:#000}
+  .blobs,header.top,nav.tabs,#splash,.noprint,.toast{display:none!important}
+  main{padding:0;max-width:none}
+  .view{display:none!important}
+  #v-informe{display:block!important}
+  .card,.kpi,.ck,.indi{background:#fff!important;border:1px solid #ccc;box-shadow:none;color:#000;break-inside:avoid}
+  .card p,.card li,table.st td.ind,.kpi small,.indi small{color:#333!important}
+  table.st tr.h td{color:#000}
+  .print-head{display:block;margin-bottom:12px}
+}
+@media (min-width:640px){.kpis{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<div class="blobs"><i></i><i></i><i></i></div>
+
+<div id="splash">
+  <div>
+    <div class="big">📊</div>
+    <h1>Estados Financieros Fácil</h1>
+    <p>Desarrollada por Vibras Positivas HM — Derechos de Autor Reservados</p>
+  </div>
+</div>
+
+<header class="top">
+  <div class="logo">EF</div>
+  <div><b>Estados Financieros Fácil</b><small>Aprende y arma los 4 estados de tu negocio</small></div>
+  <button id="btnInstall">Instalar</button>
+</header>
+
+<main>
+<!-- ============ APRENDE ============ -->
+<section class="view on" id="v-aprende">
+  <div class="hero">
+    <h2>Los 4 estados financieros, explicados como se los explicaría a un amigo</h2>
+    <p>Para tenderos, emprendedores y negocios del pueblo. Sin palabras raras, con ejemplos de una tienda de barrio.</p>
+    <div class="chips"><span class="chip">⚖️ Balance</span><span class="chip">📈 Resultados</span><span class="chip">💵 Flujo de caja</span><span class="chip">🧱 Patrimonio</span></div>
+  </div>
+
+  <div class="card rv">
+    <h3><span class="num n5">?</span>¿Para qué sirven?</h3>
+    <p>Son los reportes que cuentan la verdad de tu negocio: <b>qué tienes, qué debes, si ganaste o perdiste y por dónde se fue la plata</b>.</p>
+    <p>Sirven para tomar decisiones con números y no con corazonadas, para pedir un préstamo en el banco, para mostrarle el negocio a un socio y para que tu contador calcule bien los impuestos.</p>
+  </div>
+
+  <div class="card rv">
+    <h3><span class="num n1">1</span>Balance General</h3>
+    <p>Es una <b>foto</b> del negocio en un día exacto (por ejemplo, el 31 de diciembre). Muestra tres cosas:</p>
+    <ul>
+      <li><b>Activos:</b> lo que el negocio tiene. Plata en caja y bancos, fiados por cobrar, mercancía, nevera, moto, local.</li>
+      <li><b>Pasivos:</b> lo que el negocio debe. Proveedores, préstamos, impuestos y salarios pendientes.</li>
+      <li><b>Patrimonio:</b> lo que de verdad es tuyo. Lo que pusiste más las ganancias que has dejado en el negocio.</li>
+    </ul>
+    <div class="formula">Activos = Pasivos + Patrimonio</div>
+    <p class="mut">Juega con la balanza: mueve lo que tienes y lo que debes, y mira cuánto es realmente tuyo.</p>
+    <div class="play">
+      <label>Lo que tiene el negocio <b id="lbA">$50.000.000</b></label>
+      <input type="range" id="rA" min="5" max="100" value="50">
+      <label>Lo que debe <b id="lbP">$20.000.000</b></label>
+      <input type="range" id="rP" min="0" max="120" value="20">
+      <div class="stack">
+        <div class="col"><div class="seg" id="sA" style="background:var(--blu)">ACTIVOS</div><small>Lo que tiene</small></div>
+        <div class="col"><div class="seg" id="sPat" style="background:var(--grn)">TUYO</div><div class="seg" id="sP" style="background:var(--red);margin-top:3px">DEUDA</div><small>Deuda + tuyo</small></div>
+      </div>
+      <p class="mut" id="playMsg" style="margin-top:8px"></p>
+    </div>
+    <details class="more"><summary>Corriente y no corriente, ¿qué es eso?</summary>
+      <p style="margin-top:8px"><b>Corriente</b> es lo que se vuelve plata (o se paga) en menos de un año: caja, fiados, mercancía, la factura del proveedor.</p>
+      <p><b>No corriente</b> es lo de largo plazo: la nevera, la moto, el local, el préstamo a 3 años.</p>
+      <p>Paso a paso: anota los activos corrientes, luego los no corrientes y súmalos. Haz lo mismo con los pasivos. Suma el patrimonio. Al final, pasivos + patrimonio tiene que dar exactamente igual a los activos. Si no da, algo se te quedó por fuera.</p>
+    </details>
+  </div>
+
+  <div class="card rv">
+    <h3><span class="num n2">2</span>Estado de Resultados</h3>
+    <p>Ya no es una foto sino una <b>película</b> de un periodo (un mes, un trimestre o un año). Dice si el negocio <b>ganó o perdió</b>.</p>
+    <div class="formula">Ingresos − Costos − Gastos = Utilidad</div>
+    <p class="mut">Así baja la plata de una tienda que vendió $180 millones en el año:</p>
+    <div class="casc" id="casc"></div>
+    <details class="more"><summary>Las 9 líneas del estado, en orden</summary>
+      <ol style="margin-top:8px">
+        <li><b>Ventas</b>: todo lo que vendiste.</li>
+        <li><b>Costo de ventas</b>: lo que te costó la mercancía vendida.</li>
+        <li><b>Utilidad bruta</b>: ventas menos costo.</li>
+        <li><b>Gastos de administración y ventas</b>: arriendo, servicios, salarios, domicilios.</li>
+        <li><b>Utilidad operacional</b>: lo que deja el negocio en sí.</li>
+        <li><b>Gastos financieros</b>: intereses del banco.</li>
+        <li><b>Utilidad antes de impuestos</b>.</li>
+        <li><b>Impuesto de renta</b>.</li>
+        <li><b>Utilidad del ejercicio</b>: lo que de verdad ganaste.</li>
+      </ol>
+    </details>
+  </div>
+
+  <div class="card rv">
+    <h3><span class="num n3">3</span>Flujo de Caja</h3>
+    <p>Cuenta la <b>plata que entró y salió de verdad</b>. Ojo: un negocio puede tener utilidad en el papel y quedarse sin efectivo, por ejemplo si vende mucho fiado o compra demasiada mercancía.</p>
+    <p>El dinero se mueve por tres caminos:</p>
+    <ul>
+      <li>🛒 <b>Operación:</b> cobrar ventas, pagar proveedores, salarios, servicios e impuestos.</li>
+      <li>🧊 <b>Inversión:</b> comprar o vender equipos, vehículos, locales.</li>
+      <li>🏦 <b>Financiación:</b> préstamos que recibes o pagas, plata que meten o sacan los dueños.</li>
+    </ul>
+    <div class="formula">Efectivo inicial + Entradas − Salidas = Efectivo final</div>
+    <details class="more"><summary>Método directo e indirecto</summary>
+      <p style="margin-top:8px"><b>Directo:</b> sumas lo que realmente entró y salió de la caja y los bancos. Es el más fácil de entender y es el que usa esta app.</p>
+      <p><b>Indirecto:</b> parte de la utilidad del Estado de Resultados y la va ajustando con los cambios del Balance. Es el que suelen generar los programas contables.</p>
+    </details>
+  </div>
+
+  <div class="card rv">
+    <h3><span class="num n4">4</span>Cambios en el Patrimonio</h3>
+    <p>Muestra <b>cómo creció o bajó lo que es tuyo</b> de un periodo a otro y por qué.</p>
+    <div class="formula">Patrimonio inicial + Aportes + Utilidad − Retiros = Patrimonio final</div>
+    <p>Te ayuda a ver si el negocio se está fortaleciendo o si los dueños están sacando más plata de la que el negocio produce.</p>
+  </div>
+
+  <div class="card rv">
+    <h3><span class="num n5">＋</span>Bonus: las Notas</h3>
+    <p>Son las explicaciones que acompañan los estados: cómo se valoró el inventario, cuánto se depreció la moto, qué préstamos hay y en qué condiciones. Le dan contexto al banco, al socio o al contador para que entienda de dónde salen las cifras.</p>
+  </div>
+
+  <div class="card rv">
+    <h3><span class="num n1">✓</span>Antes de cerrar el año</h3>
+    <p class="mut">Marca lo que ya hiciste. Se guarda en tu celular.</p>
+    <div id="chkCierre"></div>
+    <div class="prog"><i id="progCierre"></i></div>
+  </div>
+
+  <div class="card rv">
+    <h3><span class="num n3">💡</span>Flujo de caja positivo</h3>
+    <p class="mut">5 hábitos para que no te falte efectivo.</p>
+    <div id="chkFlujo"></div>
+    <div class="prog"><i id="progFlujo"></i></div>
+  </div>
+
+  <div class="card rv" id="quizCard">
+    <h3><span class="num n2">🎯</span>Ponte a prueba</h3>
+    <div id="quiz" style="margin-top:10px"></div>
+  </div>
+
+  <button class="btn b1" style="width:100%" onclick="go('armar')">Armar los estados de mi negocio →</button>
+</section>
+
+<!-- ============ ARMAR ============ -->
+<section class="view" id="v-armar">
+  <div class="hero" style="background:linear-gradient(135deg,#0f7a63,#1d6fb8 60%,#5b3bd6)">
+    <h2>Arma tus estados financieros</h2>
+    <p>Llena paso a paso. La app suma, cuadra y te avisa si algo no da.</p>
+    <div class="chips"><button class="chip noprint" style="color:#fff" onclick="loadExample()">🧪 Cargar ejemplo de tienda</button></div>
+  </div>
+  <div class="steps" id="steps"></div>
+  <div id="panels"></div>
+  <div class="live" id="live"><span class="ic">📊</span><div class="tx" id="liveTx"></div></div>
+  <div class="nav2">
+    <button class="btn b2" id="prevB" onclick="step(-1)">← Atrás</button>
+    <button class="btn b1" id="nextB" onclick="step(1)">Siguiente →</button>
+  </div>
+  <p class="privacy">🔒 Tus cifras se guardan solo en este celular. No se envían a ningún servidor. Haz copias con «Guardar copia» en el Informe.</p>
+</section>
+
+<!-- ============ INFORME ============ -->
+<section class="view" id="v-informe">
+  <div id="informe"></div>
+</section>
+
+<footer class="credit">Desarrollada por <b>Vibras Positivas HM</b> — Derechos de Autor Reservados<br>Contenido educativo. Para declaraciones oficiales, consulta a un contador público.</footer>
+</main>
+
+<nav class="tabs">
+  <button class="on" data-v="aprende" onclick="go('aprende')"><span>📚</span>Aprende</button>
+  <button data-v="armar" onclick="go('armar')"><span>🧮</span>Arma</button>
+  <button data-v="informe" onclick="go('informe')"><span>📑</span>Informe</button>
+</nav>
+<div class="toast" id="toast"></div>
+<input type="file" id="fileIn" accept=".json,application/json" hidden>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const KEY='ef-vphm-v1', KCHK='ef-vphm-chk';
+const fmt=n=>(n<0?'−':'')+'$'+Math.round(Math.abs(n)).toLocaleString('es-CO');
+const pct=n=>isFinite(n)?(n*100).toFixed(1).replace('.',',')+'%':'—';
+const times=n=>isFinite(n)?n.toFixed(2).replace('.',',')+' veces':'—';
+let S={}; try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){S={}}
+let CHK={}; try{CHK=JSON.parse(localStorage.getItem(KCHK))||{}}catch(e){CHK={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const v=k=>Number(S[k])||0;
+function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('on');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('on'),2200)}
+
+/* ---------- navegación ---------- */
+function go(id){
+  $$('.view').forEach(x=>x.classList.toggle('on',x.id==='v-'+id));
+  $$('nav.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.v===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(id==='informe')renderInforme();
+  if(id==='armar')updateLive();
+  if(id==='aprende')setTimeout(observe,50);
+}
+
+/* ---------- reveal ---------- */
+let io;
+function observe(){
+  if(!('IntersectionObserver' in window)){$$('.rv').forEach(e=>e.classList.add('in'));runCasc();return}
+  io=io||new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');if(e.target.contains($('#casc')))runCasc();io.unobserve(e.target)}}),{threshold:.15});
+  $$('.rv:not(.in)').forEach(e=>io.observe(e));
+}
+
+/* ---------- balanza ---------- */
+function playUpd(){
+  const A=+$('#rA').value*1e6, P=+$('#rP').value*1e6, pat=A-P, max=Math.max(A,P,1);
+  $('#lbA').textContent=fmt(A);$('#lbP').textContent=fmt(P);
+  $('#sA').style.height=(A/max*100)+'%';
+  $('#sP').style.height=(Math.min(P,A>0?P:0)/max*100)+'%';
+  $('#sPat').style.height=(Math.max(pat,0)/max*100)+'%';
+  $('#sPat').textContent=pat>0?'TUYO':'';
+  $('#playMsg').innerHTML=pat>=0?`De todo lo que tiene el negocio, <b style="color:var(--grn)">${fmt(pat)}</b> es realmente tuyo. Ese es el patrimonio.`:`¡Cuidado! El negocio debe más de lo que tiene. El patrimonio es <b style="color:var(--red)">${fmt(pat)}</b>: está en quiebra técnica.`;
+}
+$('#rA').oninput=playUpd;$('#rP').oninput=playUpd;
+
+/* ---------- cascada ---------- */
+const CASC=[['Ventas',179e6,'var(--blu)'],['− Costo',-135e6,'var(--red)'],['Utilidad bruta',44e6,'var(--grn)'],['− Gastos',-24e6,'var(--red)'],['Util. operacional',20e6,'var(--grn)'],['± Otros e intereses',-2e6,'var(--red)'],['− Impuesto',-1.2e6,'var(--red)'],['Utilidad neta',16.8e6,'var(--amb)']];
+$('#casc').innerHTML=CASC.map(c=>`<div class="crow"><span>${c[0]}</span><div class="bar" data-w="${Math.abs(c[1])/179e6*100}" style="background:${c[2]}">${fmt(Math.abs(c[1])).replace('.000.000',' M').replace(/\.(\d)00\.000$/,',$1 M')}</div></div>`).join('');
+let cascDone=false;
+function runCasc(){if(cascDone)return;cascDone=true;$$('#casc .bar').forEach((b,i)=>setTimeout(()=>b.style.width=Math.max(+b.dataset.w,14)+'%',i*160))}
+
+/* ---------- checklists ---------- */
+const CIERRE=[
+ ['Revisa todos los registros','Que cada factura, recibo y pago esté anotado y en la cuenta correcta.'],
+ ['Concilia los bancos','Que lo que dice el extracto (y Nequi o Daviplata) coincida con tus cuentas.'],
+ ['Revisa lo que te deben y lo que debes','Lista de fiados vencidos y de facturas de proveedores por pagar.'],
+ ['Cuenta el inventario','Conteo físico de la mercancía y revisión del estado de equipos y vehículos.'],
+ ['Registra ajustes y provisiones','Depreciación, fiados que ya no vas a cobrar, impuestos que se causaron.'],
+ ['Ordena los soportes','Facturas electrónicas y comprobantes que cumplan lo que pide la DIAN.'],
+ ['Saca reportes preliminares','Ingresos, gastos, cartera y deudas antes del cierre, para corregir a tiempo.']];
+const FLUJO=[
+ ['Cobra a tiempo','Identifica qué clientes se pasaron del plazo y llámalos antes de que se acumule.'],
+ ['Factura sin demora','Factura apenas vendes y haz seguimiento a lo que está pendiente.'],
+ ['Revisa los gastos fijos cada mes','Servicios, suscripciones, arriendo: busca qué bajar o renegociar.'],
+ ['Compra solo lo que rota','Mercancía quieta es plata quieta. Vigila el inventario.'],
+ ['Negocia más plazo con proveedores','Más días para pagar te dan aire para manejar el efectivo.']];
+function renderChk(id,list,prog){
+  const el=$('#'+id);
+  el.innerHTML=list.map((c,i)=>{const k=id+i;return `<div class="chk ${CHK[k]?'done':''}" data-k="${k}"><div class="box">${CHK[k]?'✓':''}</div><div class="t"><b>${c[0]}</b>${c[1]}</div></div>`}).join('');
+  const upd=()=>{const n=list.filter((_,i)=>CHK[id+i]).length;$('#'+prog).style.width=(n/list.length*100)+'%';return n};
+  upd();
+  el.querySelectorAll('.chk').forEach(d=>d.onclick=()=>{
+    const k=d.dataset.k;CHK[k]=!CHK[k];try{localStorage.setItem(KCHK,JSON.stringify(CHK))}catch(e){}
+    d.classList.toggle('done',CHK[k]);d.querySelector('.box').textContent=CHK[k]?'✓':'';
+    if(upd()===list.length){confetti();toast('¡Lista completa! 🎉')}
+  });
+}
+
+/* ---------- quiz ---------- */
+const QZ=[
+ ['¿Qué estado muestra lo que el negocio tiene y lo que debe en un día exacto?',['Estado de Resultados','Balance General','Flujo de Caja'],1],
+ ['¿Cuál es la ecuación que siempre debe cuadrar?',['Activos = Pasivos + Patrimonio','Ventas = Gastos','Pasivos = Activos + Patrimonio'],0],
+ ['Si vendes fiado, ¿dónde aparece esa plata en el Balance?',['Pasivos','Cuentas por cobrar (activo)','Patrimonio'],1],
+ ['¿Qué estado te dice si ganaste o perdiste en el año?',['Estado de Resultados','Cambios en el Patrimonio','Balance General'],0],
+ ['Tu negocio tiene utilidad pero no tienes efectivo. ¿Qué estado te ayuda a ver por qué?',['Balance General','Flujo de Caja','Notas'],1],
+ ['Comprar una nevera para la tienda es una actividad de…',['Operación','Inversión','Financiación'],1],
+ ['Pagar la cuota del préstamo al banco es una actividad de…',['Financiación','Operación','Inversión'],0],
+ ['Si los dueños sacan plata de las ganancias, ¿qué estado lo muestra mejor?',['Cambios en el Patrimonio','Estado de Resultados','Notas'],0],
+ ['¿Para qué sirven las Notas a los estados financieros?',['Para decorar el informe','Para explicar cómo se armaron las cifras','Para calcular la nómina'],1]];
+let qi=0,qok=0;
+function renderQuiz(){
+  const el=$('#quiz');
+  if(qi>=QZ.length){
+    const msg=qok===QZ.length?'¡Perfecto! Ya hablas el idioma de los números. 🏆':qok>=6?'¡Muy bien! Repasa las que fallaste.':'Vuelve a leer las tarjetas y prueba otra vez.';
+    el.innerHTML=`<div class="empty"><div class="big">${qok===QZ.length?'🏆':qok>=6?'💪':'📚'}</div><p style="font-size:20px;font-weight:800;margin:8px 0">${qok} de ${QZ.length}</p><p>${msg}</p><button class="btn b2" style="margin-top:12px;width:100%" onclick="qi=0;qok=0;renderQuiz()">Repetir</button></div>`;
+    if(qok===QZ.length)confetti();return;
+  }
+  const q=QZ[qi];
+  el.innerHTML=`<div class="qhead"><span>Pregunta ${qi+1} de ${QZ.length}</span><span>✅ ${qok}</span></div><div class="prog" style="margin:0 0 10px"><i style="width:${qi/QZ.length*100}%"></i></div><p style="font-weight:600;font-size:15px;color:var(--ink)">${q[0]}</p>`+q[1].map((o,i)=>`<button class="qopt" data-i="${i}">${o}</button>`).join('');
+  el.querySelectorAll('.qopt').forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i;el.querySelectorAll('.qopt').forEach(x=>x.disabled=true);
+    if(i===q[2]){b.classList.add('ok');qok++}else{b.classList.add('bad');el.querySelectorAll('.qopt')[q[2]].classList.add('ok')}
+    setTimeout(()=>{qi++;renderQuiz()},1100);
+  });
+}
+
+/* ---------- confeti ---------- */
+function confetti(){const c=['#ffb020','#22d3a6','#4f8cff','#ff5d73','#9b6bff'];for(let i=0;i<60;i++){const d=document.createElement('div');d.className='confetti';d.style.left=Math.random()*100+'vw';d.style.background=c[i%5];d.style.animationDuration=(1.6+Math.random()*1.6)+'s';d.style.animationDelay=Math.random()*.4+'s';document.body.appendChild(d);setTimeout(()=>d.remove(),3800)}}
+
+/* ---------- definición de campos ---------- */
+const F={
+ datos:{t:'Datos',groups:[]},
+ er:{t:'1 · Resultados',groups:[
+  {g:'Ingresos',items:[['ventas','Ventas del periodo','Todo lo que vendiste, de contado y a crédito (sin IVA si eres responsable de IVA).'],['devoluciones','(−) Devoluciones y descuentos','Lo que te devolvieron los clientes o les rebajaste.']]},
+  {g:'Costos y gastos',items:[['costoVentas','Costo de lo vendido','Lo que te costó la mercancía que vendiste. Fórmula fácil: inventario inicial + compras − inventario final.'],['gAdmin','Gastos de administración','Arriendo, servicios, salarios, contador, papelería, depreciación.'],['gVentas','Gastos de ventas','Comisiones, publicidad, domicilios, transporte de entregas.']]},
+  {g:'Otros',items:[['otrosIng','Otros ingresos','Intereses ganados, arriendos que cobras, recuperaciones.'],['gFin','Gastos financieros','Intereses de préstamos, 4x1000, comisiones bancarias.'],['impuesto','Impuesto de renta del periodo','El valor que te calcule tu contador. Si no aplica, deja 0.']]}]},
+ bal:{t:'2 · Balance',groups:[
+  {g:'Activos corrientes',sub:'Se vuelven plata en menos de un año',items:[['caja','Caja (efectivo)','La plata física del negocio en la fecha de corte.'],['bancos','Bancos y billeteras digitales','Saldo en cuentas, Nequi, Daviplata del negocio.'],['cxc','Cuentas por cobrar y fiados','Lo que los clientes te deben.'],['inventario','Inventario de mercancía','Lo que tienes en bodega y estantería, al costo.'],['otrosAC','Otros activos corrientes','Anticipos a proveedores, saldos a favor de impuestos.']]},
+  {g:'Activos no corrientes',sub:'Bienes de largo plazo',items:[['muebles','Muebles y enseres','Estanterías, neveras, vitrinas, mostradores.'],['equipos','Equipos y computadores','Computador, impresora, datáfono, básculas.'],['vehiculos','Vehículos y motos','Al valor de compra.'],['inmuebles','Locales o terrenos','Solo si son del negocio.'],['depreciacion','(−) Depreciación acumulada','El desgaste acumulado de esos bienes. Se resta.']]},
+  {g:'Pasivos corrientes',sub:'Deudas a pagar en menos de un año',items:[['proveedores','Proveedores','Facturas de mercancía pendientes de pago.'],['oblCP','Préstamos a corto plazo','Cuotas que vencen en los próximos 12 meses, gota a gota, tarjetas.'],['impPagar','Impuestos por pagar','IVA, retenciones, renta, ICA pendientes.'],['nomina','Salarios y prestaciones por pagar','Sueldos, primas, cesantías y vacaciones pendientes.'],['otrosPC','Otras cuentas por pagar','Servicios, arriendo atrasado, anticipos de clientes.']]},
+  {g:'Pasivos no corrientes',sub:'Deudas a más de un año',items:[['oblLP','Préstamos a largo plazo','Parte del préstamo que se paga después de 12 meses.'],['otrosPNC','Otros pasivos a largo plazo','Deudas con socios o familiares a largo plazo.']]},
+  {g:'Patrimonio',sub:'Lo que es de los dueños',items:[['capital','Capital','Lo que los dueños han metido al negocio.'],['utilAnt','Utilidades de años anteriores','Ganancias de años pasados que se dejaron en el negocio (ya descontados los retiros).']]}]},
+ fl:{t:'3 · Flujo de caja',groups:[
+  {g:'Al empezar',items:[['cajaIni','Efectivo al inicio del periodo','Caja + bancos del primer día del periodo.']]},
+  {g:'🛒 Operación',items:[['cobros','(+) Cobros a clientes','Plata que entró por ventas de contado y fiados cobrados.'],['pagosProv','(−) Pagos a proveedores','Plata que salió para pagar mercancía.'],['pagosNom','(−) Pagos de salarios','Sueldos y prestaciones pagados.'],['pagosGastos','(−) Pagos de otros gastos','Arriendo, servicios, publicidad, transporte.'],['pagosImp','(−) Pagos de impuestos','Lo que pagaste a la DIAN o al municipio.']]},
+  {g:'🧊 Inversión',items:[['ventaAct','(+) Venta de activos','Si vendiste una moto, una nevera, etc.'],['compraAct','(−) Compra de activos','Equipos, vehículos, mejoras al local.']]},
+  {g:'🏦 Financiación',items:[['prestRec','(+) Préstamos recibidos','Plata que te prestaron.'],['aportes','(+) Aportes de los dueños','Plata que los dueños metieron al negocio en el periodo.'],['pagoDeudas','(−) Abonos a préstamos','Capital e intereses que pagaste.'],['retiros','(−) Retiros o dividendos','Plata que los dueños sacaron para ellos.']]}]},
+ pt:{t:'4 · Patrimonio',groups:[
+  {g:'Al inicio del periodo',items:[['capIni','Capital al inicio','El capital que había el primer día.'],['utilAntIni','Utilidades acumuladas al inicio','Ganancias acumuladas que había el primer día.']]},
+  {g:'Movimientos del periodo',sub:'Se comparten con el Flujo de Caja',items:[['aportes','Aportes de los dueños',''],['retiros','Retiros o dividendos','']]}]}
+};
+const ORDER=['datos','er','bal','fl','pt'];
+let cur=0;
+
+function moneyField([k,l,h]){
+  return `<div class="fld"><label><span>${l}</span>${h?'<span class="q">?</span>':''}</label>${h?`<div class="help">${h}</div>`:''}<div class="money"><input class="inp" inputmode="numeric" data-k="${k}" placeholder="0" autocomplete="off"></div></div>`;
+}
+function buildPanels(){
+  $('#steps').innerHTML=ORDER.map((id,i)=>`<button data-i="${i}">${F[id].t}</button>`).join('');
+  $$('#steps button').forEach(b=>b.onclick=()=>setStep(+b.dataset.i));
+  let h=`<div class="panel card" data-p="datos"><h3><span class="num n5">🏪</span>Datos del negocio</h3>
+   <div class="fld"><label>Nombre del negocio</label><input class="inp" data-t="negocio" placeholder="Ej: Tienda Doña Rosa"></div>
+   <div class="fld"><label>NIT o cédula (opcional)</label><input class="inp" data-t="nit" placeholder="Opcional"></div>
+   <div class="fld"><label>Municipio</label><input class="inp" data-t="ciudad" placeholder="Ej: Caucasia"></div>
+   <div class="row2"><div class="fld"><label>Desde</label><input class="inp" type="date" data-t="desde"></div><div class="fld"><label>Hasta (fecha de corte)</label><input class="inp" type="date" data-t="hasta"></div></div>
+   <p class="mut" style="margin-top:8px">Orden recomendado: primero Resultados, porque la utilidad del periodo pasa sola al Balance y al Patrimonio.</p></div>`;
+  ['er','bal','fl','pt'].forEach((id,n)=>{
+    h+=`<div class="panel card" data-p="${id}"><h3><span class="num n${n+1}">${n+1}</span>${F[id].t.slice(4)}</h3>`+
+      F[id].groups.map((g,gi)=>`<div class="grp"><h4>${g.g}<em id="sub-${id}-${gi}"></em></h4>${g.sub?`<div class="sub">${g.sub}</div>`:''}${g.items.map(moneyField).join('')}</div>`).join('')+
+      (id==='bal'?`<div class="grp"><h4>Utilidad del periodo<em id="balUtil"></em></h4><div class="sub">Viene sola del Estado de Resultados</div></div>`:'')+
+      `</div>`;
+  });
+  $('#panels').innerHTML=h;
+  $$('.fld .q').forEach(q=>q.onclick=()=>q.closest('.fld').classList.toggle('h'));
+  $$('input[data-k]').forEach(inp=>{
+    inp.value=S[inp.dataset.k]?Number(S[inp.dataset.k]).toLocaleString('es-CO'):'';
+    inp.addEventListener('input',()=>{
+      const raw=inp.value.replace(/\D/g,'');const n=raw?parseInt(raw,10):0;
+      S[inp.dataset.k]=n;inp.value=raw?n.toLocaleString('es-CO'):'';
+      $$(`input[data-k="${inp.dataset.k}"]`).forEach(o=>{if(o!==inp)o.value=inp.value});
+      save();updateLive();
+    });
+  });
+  $$('input[data-t]').forEach(inp=>{inp.value=S[inp.dataset.t]||'';inp.addEventListener('input',()=>{S[inp.dataset.t]=inp.value;save()})});
+}
+function setStep(i){
+  cur=Math.max(0,Math.min(ORDER.length-1,i));
+  $$('.panel').forEach(p=>p.classList.toggle('on',p.dataset.p===ORDER[cur]));
+  $$('#steps button').forEach((b,j)=>b.classList.toggle('on',j===cur));
+  $('#steps button.on').scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
+  $('#prevB').style.visibility=cur?'visible':'hidden';
+  $('#nextB').textContent=cur===ORDER.length-1?'Ver informe 📑':'Siguiente →';
+  updateLive();
+}
+function step(d){if(cur===ORDER.length-1&&d>0){go('informe');return}setStep(cur+d);window.scrollTo({top:0,behavior:'smooth'})}
+
+/* ---------- cálculos ---------- */
+const sum=ks=>ks.reduce((a,k)=>a+v(k),0);
+function calc(){
+  const c={};
+  c.vn=v('ventas')-v('devoluciones');
+  c.ub=c.vn-v('costoVentas');
+  c.uo=c.ub-v('gAdmin')-v('gVentas');
+  c.uai=c.uo+v('otrosIng')-v('gFin');
+  c.un=c.uai-v('impuesto');
+  c.ac=sum(['caja','bancos','cxc','inventario','otrosAC']);
+  c.anc=sum(['muebles','equipos','vehiculos','inmuebles'])-v('depreciacion');
+  c.a=c.ac+c.anc;
+  c.pc=sum(['proveedores','oblCP','impPagar','nomina','otrosPC']);
+  c.pnc=sum(['oblLP','otrosPNC']);
+  c.p=c.pc+c.pnc;
+  c.pat=v('capital')+v('utilAnt')+c.un;
+  c.difBal=c.a-(c.p+c.pat);
+  c.fop=v('cobros')-v('pagosProv')-v('pagosNom')-v('pagosGastos')-v('pagosImp');
+  c.finv=v('ventaAct')-v('compraAct');
+  c.ffin=v('prestRec')+v('aportes')-v('pagoDeudas')-v('retiros');
+  c.fneto=c.fop+c.finv+c.ffin;
+  c.cajaFin=v('cajaIni')+c.fneto;
+  c.efBal=v('caja')+v('bancos');
+  c.difCaja=c.cajaFin-c.efBal;
+  c.capFin=v('capIni')+v('aportes');
+  c.uaFin=v('utilAntIni')-v('retiros');
+  c.patIni=v('capIni')+v('utilAntIni');
+  c.patFin=c.capFin+c.uaFin+c.un;
+  c.difPat=c.patFin-c.pat;
+  c.has={er:c.vn!==0,bal:c.a!==0||c.p!==0,fl:v('cajaIni')||v('cobros')||c.fneto,pt:c.patIni!==0};
+  return c;
+}
+const tol=n=>Math.abs(n)<1;
+
+function updateLive(){
+  const c=calc(),id=ORDER[cur],L=$('#live');let ic='📊',tx='',st='';
+  ['er','bal','fl','pt'].forEach(p=>F[p].groups.forEach((g,gi)=>{const el=$(`#sub-${p}-${gi}`);if(!el)return;let s=g.items.reduce((a,[k])=>a+(['devoluciones','depreciacion'].includes(k)||((p==='fl'||p==='pt')&&/^pagos|compraAct|pagoDeudas|retiros/.test(k))?-v(k):v(k)),0);if(p==='fl'&&gi===0)s=v('cajaIni');el.textContent=fmt(s)}));
+  if($('#balUtil'))$('#balUtil').textContent=fmt(c.un);
+  if(id==='datos'){ic='🏪';tx=`<b>${S.negocio||'Tu negocio'}</b>Llena los datos y sigue con Resultados.`}
+  if(id==='er'){ic=c.un>=0?'📈':'📉';st=c.vn?(c.un>=0?'good':'bad'):'';tx=`<b style="color:${c.un>=0?'var(--grn)':'var(--red)'}">${fmt(c.un)}</b>${c.un>=0?'Utilidad del periodo':'Pérdida del periodo'} · margen neto ${c.vn?pct(c.un/c.vn):'—'}`}
+  if(id==='bal'){ic=tol(c.difBal)&&c.a?'✅':'⚖️';st=c.a?(tol(c.difBal)?'good':'bad'):'';tx=tol(c.difBal)?`<b>${fmt(c.a)}</b>¡Cuadra! Activos = Pasivos + Patrimonio`:`<b style="color:var(--red)">Descuadre ${fmt(c.difBal)}</b>Activos ${fmt(c.a)} · Pasivo + Patrimonio ${fmt(c.p+c.pat)}`}
+  if(id==='fl'){ic=c.fneto>=0?'💵':'🔻';st=c.efBal||c.cajaFin?(tol(c.difCaja)?'good':'bad'):'';tx=`<b>${fmt(c.cajaFin)}</b>Efectivo final · ${tol(c.difCaja)?'coincide con caja + bancos del Balance ✓':'en el Balance tienes '+fmt(c.efBal)+' (diferencia '+fmt(c.difCaja)+')'}`}
+  if(id==='pt'){ic='🧱';st=c.patIni?(tol(c.difPat)?'good':'bad'):'';tx=`<b>${fmt(c.patFin)}</b>Patrimonio final · ${tol(c.difPat)?'coincide con el Balance ✓':'el Balance dice '+fmt(c.pat)}`}
+  L.className='live '+st;L.querySelector('.ic').textContent=ic;$('#liveTx').innerHTML=tx;
+  $$('#steps button').forEach((b,j)=>{const p=ORDER[j];b.classList.toggle('ok',p==='datos'?!!S.negocio:!!c.has[p])});
+}
+
+/* ---------- indicadores ---------- */
+function indicadores(c){
+  const rc=c.ac/c.pc, pa=(c.ac-v('inventario'))/c.pc, en=c.p/c.a, mb=c.ub/c.vn, mn=c.un/c.vn, roe=c.un/c.pat;
+  const sem=(x,g,y,inv)=>!isFinite(x)?'n':inv?(x<=g?'g':x<=y?'y':'r'):(x>=g?'g':x>=y?'y':'r');
+  return [
+   ['Razón corriente',times(rc),'Por cada $1 que debes a corto plazo, cuánto tienes para pagarlo. Ideal: 1,5 o más.',sem(rc,1.5,1)],
+   ['Prueba ácida',times(pa),'Lo mismo pero sin contar la mercancía. Ideal: 1 o más.',sem(pa,1,.7)],
+   ['Capital de trabajo',fmt(c.ac-c.pc),'Plata de corto plazo que te queda después de pagar las deudas de corto plazo.',c.ac||c.pc?(c.ac-c.pc>=0?'g':'r'):'n'],
+   ['Endeudamiento',pct(en),'Qué parte de lo que tiene el negocio está financiada con deuda. Ideal: 50% o menos.',sem(en,.5,.7,true)],
+   ['Margen bruto',pct(mb),'De cada $100 que vendes, cuánto te queda después del costo de la mercancía.',sem(mb,.2,.1)],
+   ['Margen neto',pct(mn),'De cada $100 que vendes, cuánto es ganancia limpia.',sem(mn,.05,0)],
+   ['Rentabilidad del patrimonio',pct(roe),'Cuánto rindió la plata de los dueños en el periodo.',sem(roe,.15,0)]];
+}
+
+/* ---------- informe ---------- */
+function rowT(l,n,cls=''){return `<tr class="${cls}"><td class="${cls?'':'ind'}">${l}</td><td class="${n<0?'neg':''}">${fmt(n)}</td></tr>`}
+function rowsFrom(keys,neg=[]){return keys.filter(([k])=>v(k)).map(([k,l])=>rowT(l.replace(/^\([+−]\) /,''),neg.includes(k)?-v(k):v(k))).join('')}
+function G(id,gi){return F[id].groups[gi].items}
+function renderInforme(){
+  const c=calc(),el=$('#informe');
+  if(!c.has.er&&!c.has.bal){
+    el.innerHTML=`<div class="card empty"><div class="big">📑</div><h3 style="justify-content:center;margin:10px 0">Aún no hay cifras</h3><p>Llena los pasos en «Arma» o carga el ejemplo de una tienda para ver cómo queda el informe.</p><div class="acts" style="margin-top:14px"><button class="btn b1" onclick="go('armar')">Ir a Arma</button><button class="btn b2" onclick="loadExample();go('informe')">Ver ejemplo</button></div></div>`;return;
+  }
+  const per=(S.desde||S.hasta)?`${S.desde?fechaL(S.desde):'…'} al ${S.hasta?fechaL(S.hasta):'…'}`:'Periodo sin fecha';
+  const chk=[[tol(c.difBal),'Balance: Activos = Pasivos + Patrimonio','Descuadre de '+fmt(c.difBal)+'. Revisa que no falte ninguna cuenta.']];
+  if(c.has.fl)chk.push([tol(c.difCaja),'Flujo de caja: el efectivo final coincide con caja + bancos','Diferencia de '+fmt(c.difCaja)+' entre el flujo y el Balance.']);
+  if(c.has.pt)chk.push([tol(c.difPat),'Patrimonio: el final coincide con el Balance','Diferencia de '+fmt(c.difPat)+'. Revisa capital, aportes y retiros.']);
+  const er=G('er',2);
+  el.innerHTML=`
+  <div class="print-head"><h2>${esc(S.negocio||'Mi negocio')}</h2><p>${S.nit?'NIT/CC '+esc(S.nit)+' · ':''}${esc(S.ciudad||'')} · ${per}</p></div>
+  <div class="hero noprint" style="background:linear-gradient(135deg,#5b3bd6,#d0446a 70%,#ff8a3d)">
+    <h2>${esc(S.negocio||'Mi negocio')}</h2><p>${esc(S.ciudad||'')}${S.ciudad?' · ':''}${per}</p>
+    <div class="chips"><span class="chip">${c.un>=0?'📈 Ganó':'📉 Perdió'} ${fmt(Math.abs(c.un))}</span><span class="chip">${tol(c.difBal)?'✅ Balance cuadrado':'⚠️ Balance descuadrado'}</span></div>
+  </div>
+  <div class="kpis">
+    <div class="kpi k1"><small>Activos</small><b data-n="${c.a}">$0</b></div>
+    <div class="kpi k2"><small>Pasivos</small><b data-n="${c.p}">$0</b></div>
+    <div class="kpi k3"><small>Patrimonio</small><b data-n="${c.pat}">$0</b></div>
+    <div class="kpi k4"><small>Utilidad</small><b data-n="${c.un}">$0</b></div>
+  </div>
+  <div class="checks">${chk.map(([ok,a,b])=>`<div class="ck ${ok?'g':'r'}"><span>${ok?'✅':'⚠️'}</span><div>${ok?a:b}</div></div>`).join('')}</div>
+
+  <div class="card"><h3><span class="num n2">1</span>Estado de Resultados</h3><p class="mut">${per}</p>
+   <table class="st">
+    ${rowT('Ventas',v('ventas'))}${v('devoluciones')?rowT('Devoluciones y descuentos',-v('devoluciones')):''}
+    ${rowT('Ventas netas',c.vn,'s')}${rowT('Costo de ventas',-v('costoVentas'))}
+    ${rowT('Utilidad bruta',c.ub,'s')}${rowT('Gastos de administración',-v('gAdmin'))}${rowT('Gastos de ventas',-v('gVentas'))}
+    ${rowT('Utilidad operacional',c.uo,'s')}${v('otrosIng')?rowT('Otros ingresos',v('otrosIng')):''}${rowT('Gastos financieros',-v('gFin'))}
+    ${rowT('Utilidad antes de impuestos',c.uai,'s')}${rowT('Impuesto de renta',-v('impuesto'))}
+    ${rowT(c.un>=0?'Utilidad del ejercicio':'Pérdida del ejercicio',c.un,'t')}
+   </table></div>
+
+  <div class="card"><h3><span class="num n1">2</span>Balance General</h3><p class="mut">A ${S.hasta?fechaL(S.hasta):'la fecha de corte'}</p>
+   <table class="st">
+    <tr class="h"><td colspan="2">ACTIVOS</td></tr>
+    ${rowsFrom(G('bal',0))}${rowT('Total activos corrientes',c.ac,'s')}
+    ${rowsFrom(G('bal',1),['depreciacion'])}${rowT('Total activos no corrientes',c.anc,'s')}
+    ${rowT('TOTAL ACTIVOS',c.a,'t')}
+    <tr class="h"><td colspan="2">PASIVOS</td></tr>
+    ${rowsFrom(G('bal',2))}${rowT('Total pasivos corrientes',c.pc,'s')}
+    ${rowsFrom(G('bal',3))}${rowT('Total pasivos no corrientes',c.pnc,'s')}
+    ${rowT('TOTAL PASIVOS',c.p,'t')}
+    <tr class="h"><td colspan="2">PATRIMONIO</td></tr>
+    ${rowsFrom(G('bal',4))}${rowT('Utilidad del ejercicio',c.un)}
+    ${rowT('TOTAL PATRIMONIO',c.pat,'t')}
+    ${rowT('PASIVO + PATRIMONIO',c.p+c.pat,'t')}
+   </table></div>
+
+  ${c.has.fl?`<div class="card"><h3><span class="num n3">3</span>Flujo de Caja (método directo)</h3><p class="mut">${per}</p>
+   <table class="st">
+    ${rowT('Efectivo al inicio',v('cajaIni'),'s')}
+    <tr class="h"><td colspan="2">Actividades de operación</td></tr>
+    ${rowsFrom(G('fl',1),['pagosProv','pagosNom','pagosGastos','pagosImp'])}${rowT('Flujo de operación',c.fop,'s')}
+    <tr class="h"><td colspan="2">Actividades de inversión</td></tr>
+    ${rowsFrom(G('fl',2),['compraAct'])}${rowT('Flujo de inversión',c.finv,'s')}
+    <tr class="h"><td colspan="2">Actividades de financiación</td></tr>
+    ${rowsFrom(G('fl',3),['pagoDeudas','retiros'])}${rowT('Flujo de financiación',c.ffin,'s')}
+    ${rowT('Aumento (disminución) del efectivo',c.fneto,'s')}
+    ${rowT('EFECTIVO AL FINAL',c.cajaFin,'t')}
+   </table></div>`:''}
+
+  ${c.has.pt?`<div class="card"><h3><span class="num n4">4</span>Cambios en el Patrimonio</h3><p class="mut">${per}</p>
+   <table class="st">
+    <tr class="h"><td>Concepto</td><td>Valor</td></tr>
+    ${rowT('Patrimonio al inicio',c.patIni,'s')}
+    ${rowT('Capital al inicio',v('capIni'))}${rowT('Utilidades acumuladas al inicio',v('utilAntIni'))}
+    ${rowT('(+) Aportes de los dueños',v('aportes'))}${rowT('(+/−) Resultado del ejercicio',c.un)}${rowT('(−) Retiros o dividendos',-v('retiros'))}
+    ${rowT('PATRIMONIO AL FINAL',c.patFin,'t')}
+   </table></div>`:''}
+
+  <div class="card"><h3><span class="num n5">🚦</span>¿Cómo está el negocio?</h3><p class="mut">Referencias generales; cada sector es distinto.</p>
+   <div class="ind-grid">${indicadores(c).map(([n,val,d,s])=>`<div class="indi"><span class="dot ${s}"></span><div><b>${n}</b><small>${d}</small></div><strong>${val}</strong></div>`).join('')}</div>
+   ${lectura(c)}
+  </div>
+
+  <div class="card noprint"><h3>Acciones</h3>
+   <div class="acts" style="margin-top:10px">
+    <button class="btn b1" onclick="window.print()">🖨️ PDF / Imprimir</button>
+    <button class="btn b3" onclick="shareWA()">💬 WhatsApp</button>
+    <button class="btn b2" onclick="exportJSON()">💾 Guardar copia</button>
+    <button class="btn b2" onclick="$('#fileIn').click()">📂 Abrir copia</button>
+    <button class="btn b4" style="grid-column:1/-1" onclick="resetAll()">🗑️ Borrar todo y empezar de nuevo</button>
+   </div></div>`;
+  $$('.kpi b[data-n]').forEach(countUp);
+}
+function lectura(c){
+  const t=[];
+  if(c.vn){t.push(c.un>=0?`El negocio <b>ganó ${fmt(c.un)}</b>: de cada $100 vendidos quedaron ${Math.round(c.un/c.vn*100)} de ganancia.`:`El negocio <b>perdió ${fmt(-c.un)}</b>. Revisa precios, costo de la mercancía y gastos fijos.`)}
+  if(c.pc){const rc=c.ac/c.pc;t.push(rc>=1.5?'Tiene buena capacidad para pagar las deudas de corto plazo.':rc>=1?'Alcanza a pagar las deudas de corto plazo, pero con poco margen.':'Las deudas de corto plazo superan lo que tiene para pagarlas: cuidado con la liquidez.')}
+  if(c.has.fl&&c.un>0&&c.fop<0)t.push('Ojo: hay utilidad pero la operación consumió efectivo. Revisa los fiados y el inventario.');
+  if(c.has.pt&&v('retiros')>c.un&&c.un>=0)t.push('Los dueños retiraron más de lo que ganó el negocio en el periodo.');
+  return t.length?`<div class="privacy" style="margin-top:12px;color:var(--ink)">📝 ${t.join(' ')}</div>`:'';
+}
+function countUp(el){const n=+el.dataset.n,t0=performance.now(),d=900;const f=t=>{const p=Math.min((t-t0)/d,1),e=1-Math.pow(1-p,3);el.textContent=fmt(n*e);if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+const esc=s=>String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+function fechaL(d){const [y,m,dd]=d.split('-');return `${+dd} ${['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'][m-1]} ${y}`}
+
+/* ---------- acciones ---------- */
+function shareWA(){
+  const c=calc();
+  const txt=`📊 *${S.negocio||'Mi negocio'}* — Estados financieros\n${S.desde||S.hasta?`Periodo: ${S.desde?fechaL(S.desde):''} al ${S.hasta?fechaL(S.hasta):''}\n`:''}\n✅ Activos: ${fmt(c.a)}\n🔻 Pasivos: ${fmt(c.p)}\n🧱 Patrimonio: ${fmt(c.pat)}\n${c.un>=0?'📈 Utilidad':'📉 Pérdida'}: ${fmt(c.un)}\n💵 Efectivo final: ${fmt(c.has.fl?c.cajaFin:c.efBal)}\n\nHecho con Estados Financieros Fácil · Vibras Positivas HM\nhttps://haroldco45.github.io/estados-financieros/`;
+  window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank');
+}
+function exportJSON(){
+  const b=new Blob([JSON.stringify({app:'estados-financieros',v:1,fecha:new Date().toISOString(),datos:S},null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`estados-${(S.negocio||'negocio').toLowerCase().replace(/[^a-z0-9]+/g,'-')}-${new Date().toISOString().slice(0,10)}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);toast('Copia descargada 💾');
+}
+$('#fileIn').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const j=JSON.parse(r.result);S=j.datos||j;save();buildPanels();setStep(cur);renderInforme();toast('Copia cargada ✅')}catch(x){toast('Ese archivo no es una copia válida')}};r.readAsText(f);e.target.value=''};
+function resetAll(){if(!confirm('¿Borrar todas las cifras de este celular?'))return;S={};save();buildPanels();setStep(0);renderInforme();toast('Listo, empezamos de cero')}
+function loadExample(){
+  if(Object.keys(S).some(k=>S[k])&&!confirm('Esto reemplaza lo que has llenado por el ejemplo. ¿Seguir?'))return;
+  const y=new Date().getFullYear();
+  S={negocio:'Tienda Doña Rosa (ejemplo)',ciudad:'Caucasia',desde:`${y}-01-01`,hasta:`${y}-12-31`,
+   ventas:180e6,devoluciones:1e6,costoVentas:135e6,gAdmin:18e6,gVentas:6e6,otrosIng:5e5,gFin:2.5e6,impuesto:1.2e6,
+   caja:3e6,bancos:7.5e6,cxc:4.2e6,inventario:22e6,muebles:8e6,equipos:4.5e6,vehiculos:12e6,depreciacion:6e6,
+   proveedores:9e6,oblCP:3e6,impPagar:1.2e6,nomina:1.5e6,oblLP:6e6,capital:12e6,utilAnt:5.7e6,
+   cajaIni:7.5e6,cobros:178e6,pagosProv:138e6,pagosNom:12e6,pagosGastos:11.5e6,pagosImp:9e5,compraAct:5e6,prestRec:4e6,aportes:2e6,pagoDeudas:3.6e6,retiros:10e6,
+   capIni:10e6,utilAntIni:15.7e6};
+  save();buildPanels();setStep(1);toast('Ejemplo cargado 🧪 Todo cuadra');confetti();
+}
+
+/* ---------- PWA ---------- */
+let deferred;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;$('#btnInstall').style.display='block'});
+$('#btnInstall').onclick=async()=>{if(!deferred)return;deferred.prompt();await deferred.userChoice;deferred=null;$('#btnInstall').style.display='none'};
+window.addEventListener('appinstalled',()=>{$('#btnInstall').style.display='none';toast('App instalada 🎉')});
+if(/iphone|ipad|ipod/i.test(navigator.userAgent)&&!navigator.standalone){setTimeout(()=>toast('En iPhone: Compartir → «Agregar a inicio»'),3500)}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))}
+
+/* ---------- inicio ---------- */
+buildPanels();setStep(0);playUpd();renderChk('chkCierre',CIERRE,'progCierre');renderChk('chkFlujo',FLUJO,'progFlujo');renderQuiz();
+setTimeout(()=>{$('#splash').classList.add('out');observe()},1200);
+</script>
+</body>
+</html>
